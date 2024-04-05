@@ -1,0 +1,19 @@
+.CT-contianer{
+    display: flex;
+    background-color: #282c34;
+    min-height: 30vh;
+    color: aliceblue;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+}
+.Td-container{
+    display: flex;
+    background-color: #282c34;
+    min-height: 100vh;
+    color: aliceblue;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: -100px;
+
+}
