@@ -10,6 +10,23 @@ const port=3000
 app.use(express.json())
 app.use(cors())
 
+app.delete('/todos', async (req, res) => {
+    // res.json({ msg: 'Todo deleted' });
+    // console.log(req)
+    // //res.json({ msg: JSON.stringify(req) });
+    // return 
+    const id = req.query.id;
+    console.log("this is the id " + id);
+    await todo.findByIdAndDelete(id);
+    // const todoToDelete = todo.find(t => t._id.toString() === id);
+    // if (!todoToDelete) {
+    //   return res.status(404).json({ msg: 'Todo not found' });
+    // }
+    // const index = todo.indexOf(todoToDelete);
+    // todo.splice(index, 1);
+    // await todoToDelete.remove();
+    res.json({ msg: 'Todo deleted' });
+  });
 
 app.post('/todos',async (req,res)=>{
     const createPayload=req.body
@@ -42,7 +59,7 @@ app.get('/todos',async(req,res)=>{
 
 })
 
-app.put('/completed',async(req,res)=>{
+app.put('/todos/:completed',async(req,res)=>{
     const updatePayload=req.body
     const parsePayload=updateTodo.safeParse(updatePayload)
 

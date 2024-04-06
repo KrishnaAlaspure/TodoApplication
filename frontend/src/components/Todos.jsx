@@ -7,11 +7,12 @@ export default function Todos(){
       console.log(event);
     
     }
-    const clickDeleteHandle=(title)=>{
-      console.log(title);
-      axios.delete("http://localhost:3000/todos/"+title)
+    const clickDeleteHandle=(id)=>{
+      console.log(id);
+      axios.delete("http://localhost:3000/todos/?id="+id)
         .then((res)=>{
-          alert('Deleted')
+          alert('Deleted');
+          refreshList();
         }).catch((error)=>{
           console.log(error.message);
           setError(error.message)
@@ -29,7 +30,7 @@ export default function Todos(){
       setTodos(json.todos)
     })
     */
-  useEffect(()=>{
+   const refreshList = () =>{
     const a=axios.get("http://localhost:3000/todos/")
     .then((response)=>{
      const t=response.data
@@ -38,6 +39,9 @@ export default function Todos(){
      console.log(error.message);
      setError(error.message)
     })
+   }
+  useEffect(()=>{
+    refreshList();
   },[])
     return(
         <>
@@ -51,7 +55,7 @@ export default function Todos(){
                     <h2>{todo.title}</h2>
                     <p>{todo.discription}</p>
                     <button onClick={onClickHandle} value={todo.completed} >{todo.completed?"Done":"Not Done"}</button>
-                    <button onClick={()=>{clickDeleteHandle(todo.title)}} >Delete</button>
+                    <button onClick={()=>{clickDeleteHandle(todo._id)}} >Delete</button>
                       </div>
                     </div>
                 )
