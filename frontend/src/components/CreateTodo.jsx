@@ -3,10 +3,14 @@ import '../css/CreateTodo.css'
 
 import React, { useEffect, useState } from "react";
 
+
 export default function CreateTodo(){
     const [title,setTitle]=useState("")
     const [discription,setDiscription]=useState("")
     const [data,setData]=useState({title:"",discription:""})
+
+    const [todos,setTodos]=useState([])
+    const [error,setError]=useState([])
 
     function handleChange(event){
         setData({...data,[event.target.name]:event.target.value})
@@ -18,15 +22,19 @@ export default function CreateTodo(){
         
         
             axios.post("http://localhost:3000/todos",data)
-            .then((response)=>{
+            .then((response)=>{ 
+                
                 console.log(response.data);
                 console.log(data);
+                location.reload()
             }).catch((error)=>{
                 console.log(error);
             })
         
      
     }
+   
+    
     
 
 

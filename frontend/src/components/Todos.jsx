@@ -3,8 +3,16 @@ import axios from 'axios'
 import "../css/Todos.css"
 
 export default function Todos(){
-    function onClickHandle(event){
-      console.log(event);
+    function onClickHandle(id){
+      
+      axios.put("http://localhost:3000/todos/?id="+id)
+      .then((res)=>{
+        alert('Marked as done!')
+        refreshList();
+      })
+      .catch((error)=>{
+        setError(error.message);
+      })
     
     }
     const clickDeleteHandle=(id)=>{
@@ -51,10 +59,10 @@ export default function Todos(){
                 return(
                     <div key={todo._id} className="grid-item">
                       <div>
-                    
+                    <p>{todo._id}</p>
                     <h2>{todo.title}</h2>
                     <p>{todo.discription}</p>
-                    <button onClick={onClickHandle} value={todo.completed} >{todo.completed?"Done":"Not Done"}</button>
+                    <button onClick={()=>onClickHandle(todo._id)} value={todo.completed} >{todo.completed?"Done":"Not Done"}</button>
                     <button onClick={()=>{clickDeleteHandle(todo._id)}} >Delete</button>
                       </div>
                     </div>
