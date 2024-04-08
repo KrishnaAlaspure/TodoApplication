@@ -6,3 +6,4 @@
 - User can mark Todo as "Done"
 - User can delete the Todo 
 ![alt text](/home/krishna/Pictures/Todo.png)
+![alt text](frontend/src/assets/Todo.png)
