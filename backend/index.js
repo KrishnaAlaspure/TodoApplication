@@ -34,6 +34,8 @@ app.post('/todos',async (req,res)=>{
         discription: createPayload.discription,
         completed:false
     })
+    res.json({msg:"created"})
+
 
 })
 
@@ -51,6 +53,7 @@ app.get('/todos',async(req,res)=>{
 app.put('/todos/',async(req,res)=>{
     const id=req.query.id
     await todo.findByIdAndUpdate({_id:id},{completed:true})
+    res.json({msg:"Task has been done!"});
 
 
     // const updatePayload=req.body

@@ -59,10 +59,10 @@ export default function Todos(){
                 return(
                     <div key={todo._id} className="grid-item">
                       <div>
-                    <p>{todo._id}</p>
+                    
                     <h2>{todo.title}</h2>
                     <p>{todo.discription}</p>
-                    <button onClick={()=>onClickHandle(todo._id)} value={todo.completed} >{todo.completed?"Done":"Not Done"}</button>
+                    <button onClick={()=>onClickHandle(todo._id)} value={todo.completed} disabled={todo.completed===true} >{todo.completed?"Done":"Not Done"}</button>
                     <button onClick={()=>{clickDeleteHandle(todo._id)}} >Delete</button>
                       </div>
                     </div>
