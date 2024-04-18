@@ -81,6 +81,10 @@ app.put('/todos/',async(req,res)=>{
 
 })
 
+app.get('/',(req,res)=>{
+    res.json({"msg":"Server is running"})
+})
+
 app.listen(port,()=>{
     {console.log(`App is listening on Port ${port}`)}
 })
