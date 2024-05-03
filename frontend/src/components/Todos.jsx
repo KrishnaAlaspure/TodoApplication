@@ -5,7 +5,8 @@ import "../css/Todos.css"
 export default function Todos(){
     function onClickHandle(id){
       
-      axios.put("http://localhost:3000/todos/?id="+id)
+      //axios.put("http://localhost:3000/todos/?id="+id)
+      axios.put("https://todo-application-server-omega.vercel.app/todos/?id="+id)
       .then((res)=>{
         alert('Marked as done!')
         refreshList();
@@ -17,7 +18,8 @@ export default function Todos(){
     }
     const clickDeleteHandle=(id)=>{
       console.log(id);
-      axios.delete("http://localhost:3000/todos/?id="+id)
+      //axios.delete("http://localhost:3000/todos/?id="+id)
+      axios.delete("https://todo-application-server-omega.vercel.app/todos/?id="+id)
         .then((res)=>{
           alert('Deleted');
           refreshList();
@@ -39,7 +41,8 @@ export default function Todos(){
     })
     */
    const refreshList = () =>{
-    const a=axios.get("http://localhost:3000/todos/")
+    //const a=axios.get("http://localhost:3000/todos/")
+    const a=axios.get("https://todo-application-server-omega.vercel.app/todos/")
     .then((response)=>{
      const t=response.data
      setTodos(t.todos)

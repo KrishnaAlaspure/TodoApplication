@@ -21,7 +21,8 @@ export default function CreateTodo(){
         console.log("hello");
         
         
-            axios.post("http://localhost:3000/todos",data)
+            //axios.post("http://localhost:3000/todos",data)
+            axios.post("https://todo-application-server-omega.vercel.app/todos",data)
             .then((response)=>{ 
                 
                 console.log(response.data);
